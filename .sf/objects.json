@@ -1,0 +1,3 @@
+[
+  { "name": "ZMM_BDY_KOKPIT", "type": "PROG", "change": "MODIFY", "file": "src/zmm_bolge/zmm_bdy_kokpit.prog.abap" }
+]

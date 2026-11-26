@@ -1179,6 +1179,13 @@ FORM show_plasiyer_f4 USING pv_dynprofield TYPE help_info-dynprofld.
   DATA: lt_plas TYPE TABLE OF ty_plas,
         ls_plas TYPE ty_plas.
 
+*{SMT-260 Depozito teslimatları 9. seçenekte (S_PLAS2) hariç
+  DATA: lr_delty TYPE RANGE OF zsd_packitm-delty.
+  IF pv_dynprofield = 'S_PLAS2'.
+    APPEND VALUE #( sign = 'E' option = 'EQ' low = 'D' ) TO lr_delty.
+  ENDIF.
+*}SMT-260
+
   IF lv_vstel IS NOT INITIAL.
     " 1. Ham veriyi (Müşteri ve Teslimat Listesi) çek
     SELECT DISTINCT h~kunnr AS kunnr, a~name1 AS name1, i~vbeln
@@ -1189,7 +1196,8 @@ FORM show_plasiyer_f4 USING pv_dynprofield TYPE help_info-dynprofld.
       LEFT JOIN kna1 AS a ON a~kunnr = h~kunnr
       WHERE h~vstel     = @lv_vstel
         AND h~wadat_ist = @lv_datum
-        AND v~wbstk     = 'C'.
+        AND v~wbstk     = 'C'
+        AND i~delty     IN @lr_delty. "SMT-260
 
     IF lt_raw[] IS NOT INITIAL.
 
