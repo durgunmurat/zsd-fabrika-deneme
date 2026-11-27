@@ -2,7 +2,7 @@
 
 ## Özet
 
-Yeni rapor **ZMM_R_PLASIYER_OZET** (paket ZMM_BOLGE, işlem kodu ZBDY11 — elle oluşturulacak, bkz. `manual-steps.md`).
+Yeni rapor **ZMM_R_BDY_PLASIYER_OZET** (paket ZMM_BOLGE, işlem kodu ZBDY11 — elle oluşturulacak, bkz. `manual-steps.md`).
 
 - Seçim ekranı: **Sevkiyat noktası** (çoklu seçim, zorunlu) ve **Tarih** (fiili mal çıkış tarihi, varsayılan bugün, zorunlu).
 - Yalnızca mal çıkışı tamamlanmış teslimatlar gelir.
@@ -13,6 +13,7 @@ Yeni rapor **ZMM_R_PLASIYER_OZET** (paket ZMM_BOLGE, işlem kodu ZBDY11 — elle
 
 ## Teknik kararlar
 
+0. **Program adı (geri bildirim, 2. üretim).** Eski ad `ZMM_R_PLASIYER_OZET` → yeni ad `ZMM_R_BDY_PLASIYER_OZET`. Neden: geliştirici geri bildirimi; kontrolün önerdiği ve paketteki `ZMM_R_BDY_*` düzenine uyan ad. Yeni adın sistemde olmadığı `object_exists` ile doğrulandı. Önceki turdaki `src/zmm_bolge/zmm_r_plasiyer_ozet.prog.abap` dosyası `objects.json`'da `REMOVE` olarak bildirildi. Kodda yalnızca başlık yorumu ve `REPORT` satırı değişti; mantık aynı.
 1. **Kokpitle aynı kaynak ve filtre (orta risk notu).** ZMM_BDY_KOKPIT `FORM show_plasiyer_f4` (satır ~1182-1200) okundu. Plasiyer orada `ZSD_PACKHDR-KUNNR`, adı `KNA1-NAME1` (LEFT JOIN); filtre `ZSD_PACKHDR-VSTEL`, `ZSD_PACKHDR-WADAT_IST = tarih`, `VBUK-WBSTK = 'C'`; teslimat `ZSD_PACKITM-VBELN`. Rapor birebir aynı join ve filtreyi kullanır; tek fark depozitoları **hariç tutmak yerine** `DELTY` alanını okuyup sınıflandırmasıdır. Not: teknik notta "LIKP-WBSTK" geçiyordu; kokpit gerçekte `VBUK-WBSTK` kullanıyor, rapor da öyle yapar.
 2. **Depozito sınıflandırma (orta risk notu).** Önce `DELTY = 'D'` kalemi olan teslimat numaraları tekil bir tabloya alınır; sonra plasiyer + teslimat bazında tekilleştirilip her teslimat bir kez sayılır (depozito tablosunda varsa depozito, yoksa normal). Böylece birden çok kalemi/paketi olan teslimat iki kez sayılmaz.
 3. **Plasiyer satırı:** Birden fazla sevkiyat noktası seçilirse plasiyer, seçilen noktaların toplamıyla tek satırda gösterilir (varsayım "her plasiyer için tek satır").
@@ -33,7 +34,7 @@ Yeni rapor **ZMM_R_PLASIYER_OZET** (paket ZMM_BOLGE, işlem kodu ZBDY11 — elle
 
 | Nesne | Tür | Sonuç |
 |---|---|---|
-| ZMM_R_PLASIYER_OZET | PROG | **Temiz** (2. turda; 1. turdaki "fixed point arithmetic" hatası klasik Open SQL söz dizimiyle giderildi) |
+| ZMM_R_BDY_PLASIYER_OZET | PROG | **Temiz** (yeniden adlandırma sonrası ilk denetimde; önceki üretimde "fixed point arithmetic" hatası klasik Open SQL söz dizimiyle giderilmişti) |
 
 ## Test önerisi
 

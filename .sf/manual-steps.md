@@ -1,6 +1,6 @@
 # SMT-262 Elle yapılacak adımlar
 
-1. **Program özniteliklerini kontrol et** (SE38 → ZMM_R_PLASIYER_OZET → Nitelikler)
+1. **Program özniteliklerini kontrol et** (SE38 → ZMM_R_BDY_PLASIYER_OZET → Nitelikler)
    - Tür: Yürütülebilir program, Paket: ZMM_BOLGE, Talep: ESDK968596
    - Başlık: "Plasiyer sevkiyat özeti"
    - "Sabit nokta aritmetiği" işaretli olsun (varsayılan).
@@ -30,7 +30,7 @@
 
 4. **İşlem kodu ZBDY11** (SE93)
    - Tür: Program ve seçim ekranı (rapor işlemi)
-   - Program: ZMM_R_PLASIYER_OZET, Ekran: 1000
+   - Program: ZMM_R_BDY_PLASIYER_OZET, Ekran: 1000
    - Kısa metin: "Plasiyer sevkiyat özeti"
    - Paket: ZMM_BOLGE, Talep: ESDK968596
    - GUI desteği: SAP GUI for Windows işaretli.

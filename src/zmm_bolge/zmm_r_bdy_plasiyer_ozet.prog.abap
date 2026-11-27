@@ -1,5 +1,5 @@
 *&---------------------------------------------------------------------*
-*& Report ZMM_R_PLASIYER_OZET
+*& Report ZMM_R_BDY_PLASIYER_OZET
 *&---------------------------------------------------------------------*
 *& SMT-262 Plasiyer sevkiyat özeti raporu (İşlem kodu: ZBDY11)
 *& Seçilen sevkiyat noktası / mal çıkış tarihi için plasiyer bazında
@@ -7,7 +7,7 @@
 *& Seçim mantığı BDY kokpit (ZMM_BDY_KOKPIT, FORM show_plasiyer_f4)
 *& ile aynıdır: ZSD_PACKHDR / ZSD_PACKITM, VBUK-WBSTK = 'C'.
 *&---------------------------------------------------------------------*
-REPORT zmm_r_plasiyer_ozet.
+REPORT zmm_r_bdy_plasiyer_ozet.
 
 *----------------------------------------------------------------------*
 * Veri tanımları
