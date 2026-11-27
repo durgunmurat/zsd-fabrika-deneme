@@ -1,3 +1,12 @@
 [
-  { "name": "ZMM_BDY_KOKPIT", "type": "PROG", "change": "MODIFY", "file": "src/zmm_bolge/zmm_bdy_kokpit.prog.abap" }
+  {
+    "name": "ZMM_R_BDY_PLASIYER_OZET",
+    "type": "PROG",
+    "change": "NEW",
+    "file": "src/zmm_bolge/zmm_r_bdy_plasiyer_ozet.prog.abap"
+  },
+  {
+    "change": "REMOVE",
+    "file": "src/zmm_bolge/zmm_r_plasiyer_ozet.prog.abap"
+  }
 ]
